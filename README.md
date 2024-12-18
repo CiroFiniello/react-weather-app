@@ -1,8 +1,21 @@
-# React + Vite
+Analisi del progetto
+App:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Descrizione: Componente principale che contiene tutti gli altri componenti.
+Responsabilità: Gestisce il layout globale e include i provider dei contesti.
+Header:
 
-Currently, two official plugins are available:
+Descrizione: Componente che contiene l'intestazione dell'app.
+Responsabilità: Permette di alternare tra tema scuro/chiaro e unità di misura Celsius/Fahrenheit.
+WeatherDashboard:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Descrizione: Contiene l'interfaccia principale per mostrare i dati meteo.
+Responsabilità: Visualizza una lista di WeatherCard per ogni città.
+WeatherCard:
+
+Descrizione: Componente per mostrare i dati meteo di una singola città.
+Responsabilità: Visualizza le informazioni meteo come temperatura, condizioni, ecc.
+Context Provider Components:
+
+Descrizione: Componenti che forniscono i contesti ThemeContext, UnitContext e WeatherContext ai componenti figli.
+Responsabilità: Gestiscono e forniscono i dati globali e le funzioni per alterare lo stato.
