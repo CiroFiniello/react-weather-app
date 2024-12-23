@@ -5,7 +5,12 @@ function Header() {
     <header>
       <h1>Weather App</h1>
       <nav>
-        <Link to="/home">Home</Link>
+        <ul>
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          {/* <li><Link to="/city/1">City 1</Link></li> */}
+        </ul>
       </nav>
     </header>
   );
