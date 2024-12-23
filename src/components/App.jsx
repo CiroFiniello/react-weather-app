@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route exact path="/home" component={Dashboard} />
+        <Route path="/home" element={<Dashboard />} />
         <Route path="/city/:id" element={<CityWeather />} />
       </Routes>
     </Router>
