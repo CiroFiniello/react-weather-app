@@ -1,22 +1,19 @@
-import { createContext, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Header from "./header/Header.jsx";
+import Dashboard from "./dashboard/Dashboard.jsx";
+import CityWeather from "./cityweather/CityWeather.jsx";
 import "./App.css";
 
-//creiamo il contesto
-export const WeatherContext = createContext();
-
-const WeatherProvider = ({ children }) => {
-  //definiamo lo stato che vogliamo condividere
-  const [cities, setCities] = useState([
-    { id: "Rome", name: "Roma" },
-    { id: "Milan", name: "Milano" },
-    { id: "Naples", name: "Napoli" },
-    { id: "Turin", name: "Torino" },
-    { id: "Palermo", name: "Palermo" },
-  ]);
-  const [cityWeather, setCityWeather] = useState(null);
-};
 function App() {
-  return <h1>io sono l'app principale</h1>;
+  return (
+    <Router>
+      <Header />
+      <Switch>
+        <Route exact path="/home" component={Dashboard} />
+        <Route path="/city/:id" component={CityWeather} />
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;
