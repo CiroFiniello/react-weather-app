@@ -5,7 +5,7 @@ function Header() {
     <header>
       <h1>Weather App</h1>
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </nav>
     </header>
   );
