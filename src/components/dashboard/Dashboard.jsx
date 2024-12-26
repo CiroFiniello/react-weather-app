@@ -1,36 +1,23 @@
-import React, { useContext, useEffect } from "react";
-import { WeatherContext } from "../../context/WeatherContext.jsx";
+import React, { useContext } from "react";
+import { WeatherContext } from "../../context/WeatherContext";
+import "./dashboard.scss";
 
 function Dashboard() {
-  const { weatherData, fetchWeatherData, error } = useContext(WeatherContext);
-  // Quando il componente viene montato, facciamo una chiamata per ottenere i dati per una città
-  useEffect(() => {
-    console.log("Effettuando la chiamata per Roma...");
-    fetchWeatherData("Rome"); // Chiamata API per la città di Roma
-  }, []); // Dipendenza vuota per chiamarla solo una volta quando il componente si monta
-  console.log(weatherData);
-  // Verifica se i dati per la città sono stati caricati
-  const cityWeather = weatherData["Rome"];
+  const { weatherData } = useContext(WeatherContext);
 
   return (
-    <div>
-      <h1>Weather Dashboard</h1>
-      {error ? (
-        <p style={{ color: "red" }}>Errore: {error}</p> // Mostra l'errore se presente
+    <div className="dashboard">
+      <h2>Weather Dashboard</h2>
+      {weatherData ? (
+        <div className="weather-info">
+          <h3>{weatherData.name}</h3>
+          <p>Temperature: {weatherData.main.temp}°C</p>
+          <p>Condition: {weatherData.weather[0].description}</p>
+          <p>Humidity: {weatherData.main.humidity}%</p>
+          <p>Wind Speed: {weatherData.wind.speed} m/s</p>
+        </div>
       ) : (
-        <>
-          <p>City: Rome</p>
-          {cityWeather ? (
-            <div>
-              <p>Temperature: {cityWeather.main.temp}°K</p>
-              <p>Weather: {cityWeather.weather[0].description}</p>
-              <p>Humidity: {cityWeather.main.humidity}%</p>
-              <p>Wind Speed: {cityWeather.wind.speed} m/s</p>
-            </div>
-          ) : (
-            <p>Loading...</p>
-          )}
-        </>
+        <p>No data available. Please search for a city.</p>
       )}
     </div>
   );
