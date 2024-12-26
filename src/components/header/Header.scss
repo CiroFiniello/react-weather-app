@@ -77,3 +77,76 @@ nav {
 .suggestions li:hover {
   background-color: #eee;
 }
+
+/* Contenitore per lo switch */
+.theme-switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Stile dello switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Nascondi il checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Crea il background dello switch */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc; /* Colore di background per il tema light */
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+/* Il cerchio che si sposta */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  border-radius: 50px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+/* Cambia il colore dello sfondo quando il checkbox è checked (tema dark) */
+input:checked + .slider {
+  background-color: black; /* Colore di sfondo quando il tema è scuro */
+}
+
+/* Sposta il cerchio quando il checkbox è checked */
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Cambia il colore del cerchio in base al tema */
+body.light .switch input:checked + .slider:before {
+  background-color: white; /* cerchio bianco per il tema chiaro */
+}
+
+body.dark .switch input:checked + .slider:before {
+  background-color: #333; /* cerchio scuro per il tema scuro */
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
+ul {
+  align-items: center;
+}

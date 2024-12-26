@@ -1,10 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { WeatherContext } from "../../context/WeatherContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import "./header.scss";
 
 function Header() {
   const { fetchWeatherData } = useContext(WeatherContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
@@ -183,6 +185,19 @@ function Header() {
         <ul className="nav-links">
           <li>
             <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <div className="theme-switch-container">
+              <span className="mr-2">Theme: </span>
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={theme === "dark"}
+                  onChange={toggleTheme}
+                />
+                <span className="slider round"></span>
+              </label>
+            </div>
           </li>
         </ul>
       </nav>
